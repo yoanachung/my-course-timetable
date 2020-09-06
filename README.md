@@ -22,7 +22,6 @@
 ### Domain
 - Course
     - 개설되는 강의 정보를 관리한다.
-    - [ ] 학점은 1, 2, 3학점 중 하나이다.
     - [ ] 강의는 수업 시간에 따른 Sections를 제공한다.
 - Sections
     - 강의가 제공하는 수업 목록을 관리한다.
@@ -33,22 +32,21 @@
 - SectionTime
     - 수업 진행 시간 정보를 관리한다.
     - [ ] 수업은 2교시씩 연달아 진행된다.
-    - [ ] 요일은 월-금이다.
-    - [ ] 교시는 1-8교시이다.
-- Schedule
-    - 수강 스케쥴 정보를 관리한다.
-- Schedules
-    - 한 학생의 수강 스케쥴 목록을 관리한다.
+- Credit
+    - [x] 학점은 1, 2, 3학점 중 하나이다.
+- Weekday
+    - [x] 요일은 월-금이다.
+- Period
+    - [x] 교시는 1-8교시이다.
+- TimeTable
+    - 한 학생의 수강 시간표 정보를 관리한다.
     - [ ] 동일한 과목을 중복 수강할 수 없다.
     - [ ] 수강 강의의 총 학점은 18-21힉점이다.
-- ScheduleMaker
-    - [ ] 수강을 희망하는 강의 목록을 받아 가능한 모든 스케쥴 목록을 만든다.
+- TimeTableCell
+    - 수강 시간표 한 셀의 정보를 관리한다.
+- TimeTableMaker
+    - [ ] 수강을 희망하는 강의 목록을 받아 가능한 모든 시간표 목록을 만든다.
 
 ### Service
 - ScheduleService
     - 새로운 시간표를 만드는 데 필요한 도메인의 흐름을 제어한다.
-
-### Web
-- ScheduleController
-- ScheduleRequestDto
-- ScheduleResponseDto
