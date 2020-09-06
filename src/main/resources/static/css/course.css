@@ -1,0 +1,17 @@
+.container {
+    padding-top: 30px;
+    margin-bottom: 20px;
+}
+.container h2 {
+    margin-bottom: 20px;
+}
+.card {
+    margin-bottom: 11px;
+}
+.card.section {
+    font-size: 12px;
+}
+.card.section .course-title {
+    font-size: 16px;
+    line-height: 7px;
+}
