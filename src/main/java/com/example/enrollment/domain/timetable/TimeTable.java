@@ -16,4 +16,7 @@ public class TimeTable {
 
     @OneToMany(mappedBy = "timeTable", cascade = CascadeType.ALL)
     private List<TimeTableCell> cells;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TimeTableList timeTableList;
 }

@@ -1,7 +1,7 @@
 package com.example.enrollment.service;
 
 import com.example.enrollment.dto.CourseListResponse;
-import com.example.enrollment.repository.CourseRepository;
+import com.example.enrollment.domain.course.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
