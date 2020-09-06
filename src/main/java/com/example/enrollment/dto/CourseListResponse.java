@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @Builder
 @Getter
 public class CourseListResponse {
+    private Long id;
     private String title;
     private String credit;
     private List<SectionResponse> sections;
@@ -23,6 +24,7 @@ public class CourseListResponse {
                 .collect(Collectors.toList());
 
         return CourseListResponse.builder()
+                .id(course.getId())
                 .title(course.getTitle())
                 .credit(course.getCredit().getDescription())
                 .sections(sectionResponses)

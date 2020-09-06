@@ -7,8 +7,11 @@
         <div class="card-body">
             <h2>강의 목록</h2>
             <p>원하는 강의를 선택 후 시간표 만들기 버튼을 눌러주세요.</p>
+            <div class="button-wrap">
+                <button class="scheduleBtn btn btn-outline-primary" type="button">시간표 만들기</button>
+            </div>
 
-            <div class="card section" th:each="course: ${courses}">
+            <div class="card course" th:each="course: ${courses}" th:attr="data-course-id=${course.id}">
                 <div class="card-body">
                     <p class="course-title" th:text="${course.title}"></p>
                     <p th:text="${course.credit}"></p>
@@ -23,8 +26,14 @@
                     </ul>
                 </div>
             </div>
+            <div class="button-wrap">
+                <button class="scheduleBtn btn btn-outline-primary" type="button">시간표 만들기</button>
+            </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" th:src="@{/js/course.js}"></script>
+
 </body>
 </html>
