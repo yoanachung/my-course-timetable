@@ -27,4 +27,14 @@ public class Section {
     public List<SectionTime> getSectionTimes() {
         return Collections.unmodifiableList(sectionTimes);
     }
+
+    public boolean isTimeOverlapped(Section anotherSection) {
+        return anotherSection.getSectionTimes().stream()
+                .anyMatch(this::isTimeOverlapped);
+    }
+
+    private boolean isTimeOverlapped(SectionTime anotherSectionTime) {
+        return sectionTimes.stream()
+                .anyMatch(sectionTime -> sectionTime.isTimeOverlapped(anotherSectionTime));
+    }
 }

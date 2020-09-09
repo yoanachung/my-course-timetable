@@ -18,4 +18,16 @@ public class TimeTableCell {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private TimeTable timeTable;
+
+    private TimeTableCell(Long sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    public static TimeTableCell of(Long sectionId) {
+        return new TimeTableCell(sectionId);
+    }
+
+    void setTimeTable(TimeTable timeTable) {
+        this.timeTable = timeTable;
+    }
 }

@@ -32,4 +32,12 @@ public class SectionTime {
     @Column(nullable = false)
     private Integer periodCount;
 
+    public boolean isTimeOverlapped(SectionTime anotherSectionTime) {
+        if (anotherSectionTime.getWeekday() != weekday) {
+            return false;
+        }
+
+        return Period.getPeriodsByFirstPeriod(period, periodCount).stream()
+                .anyMatch(p -> p == anotherSectionTime.getPeriod());
+    }
 }

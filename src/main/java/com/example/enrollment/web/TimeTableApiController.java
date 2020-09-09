@@ -2,7 +2,7 @@ package com.example.enrollment.web;
 
 import com.example.enrollment.dto.TimeTableCreateRequest;
 import com.example.enrollment.dto.TimeTableCreateResponse;
-import com.example.enrollment.service.ScheduleService;
+import com.example.enrollment.service.TimeTableService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +15,13 @@ import java.net.URI;
 @RestController
 public class TimeTableApiController {
 
-    private final ScheduleService scheduleService;
+    private final TimeTableService timeTableService;
 
     @PostMapping("/timetable")
     public ResponseEntity<TimeTableCreateResponse> schedule(@RequestBody TimeTableCreateRequest request) {
+
+        timeTableService.makeTimeTable(request.getCourseIds());
+
         return ResponseEntity
                 .created(URI.create("/courses"))
                 .body(new TimeTableCreateResponse());
