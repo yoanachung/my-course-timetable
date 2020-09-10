@@ -16,7 +16,7 @@
                     <p class="course-title" th:text="${course.title}"></p>
                     <p th:text="${course.credit}"></p>
                     <ul>
-                        <li th:each="section: ${course.sections}">
+                        <li th:each="section: ${course.sections}" th:attr="data-section-id=${section.id}">
                             <p th:text="'Section' + ${sectionStat.count}"></p>
                             <p th:each="sectionTime: ${section.sectionTimes}">
                                 <span th:text="${sectionTime.weekday}"></span>

@@ -19,6 +19,7 @@ public class TimeTableApiController {
 
     @PostMapping("/timetable")
     public ResponseEntity<TimeTableCreateResponse> schedule(@RequestBody TimeTableCreateRequest request) {
+        request.validate();
 
         timeTableService.makeTimeTable(request.getCourseIds());
 
