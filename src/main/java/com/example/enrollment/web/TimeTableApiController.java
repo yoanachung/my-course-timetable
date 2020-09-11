@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,8 +22,10 @@ public class TimeTableApiController {
     @PostMapping("/timetables")
     public ResponseEntity<TimeTableCreateResponse> schedule(@RequestBody TimeTableCreateRequest request) {
         request.validate();
+        List<Long> courseIds = request.getCourseIds();
 
-        TimeTableList timeTableList = timeTableService.makeTimeTable(request.getCourseIds());
+        TimeTableList timeTableList = timeTableService.findByCourseId(courseIds)
+                .orElseGet(() -> timeTableService.makeTimeTable(courseIds));
 
         return ResponseEntity
                 .created(URI.create("/timetables/" + timeTableList.getHash()))

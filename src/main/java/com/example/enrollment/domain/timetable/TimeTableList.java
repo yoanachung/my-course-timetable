@@ -33,15 +33,7 @@ public class TimeTableList {
 
     public TimeTableList(List<Long> courseIds) {
         this.courseIds = courseIds;
-        this.hash = generateHash(courseIds);
-    }
-
-    private String generateHash(List<Long> courseIds) {
-        String courseIdsStr = courseIds.stream()
-                .map(Object::toString)
-                .collect(Collectors.joining(ProjectConstant.COURSE_ID_DELIMITER));
-
-        return HashUtil.md5(courseIdsStr);
+        this.hash = TimeTableHashGenerator.generate(courseIds);
     }
 
     public void addTimeTable(TimeTable timeTable) {
