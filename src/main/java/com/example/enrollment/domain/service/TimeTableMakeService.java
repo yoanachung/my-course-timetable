@@ -79,7 +79,7 @@ public class TimeTableMakeService {
 
     private TimeTable makeTimeTable(Stack<Section> selectedSections) {
         return selectedSections.stream()
-                .map(section -> TimeTableCell.of(section.getId()))
+                .map(section -> TimeTableCell.of(section.getCourse().getId(), section.getId()))
                 .collect(Collectors.collectingAndThen(Collectors.toList(), TimeTable::of));
     }
 

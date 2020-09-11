@@ -4,6 +4,7 @@ import com.example.enrollment.domain.ProjectConstant;
 import com.example.enrollment.domain.timetable.converter.CourseIdsConverter;
 import com.example.enrollment.util.HashUtil;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class TimeTableList {

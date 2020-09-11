@@ -27,13 +27,13 @@ const course = {
 
         $.ajax({
             type: 'POST',
-            url: '/timetable',
+            url: '/timetables',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data),
-            success: function (res) {
+            success: function (data, textStatus, response) {
                 alert('성공!');
-                console.log(res);
+                location.href = response.getResponseHeader("Location");
             },
             error: function (error) {
                 alert(JSON.stringify(error));

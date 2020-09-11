@@ -5,6 +5,7 @@ import com.example.enrollment.domain.course.repository.CourseRepository;
 import com.example.enrollment.domain.service.TimeTableMakeService;
 import com.example.enrollment.domain.timetable.TimeTableList;
 import com.example.enrollment.domain.timetable.repository.TimeTableListRepository;
+import com.example.enrollment.dto.TimeTableListResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +21,15 @@ public class TimeTableService {
     private final TimeTableListRepository timeTableListRepository;
     private final TimeTableMakeService timeTableMakeService;
 
+    public TimeTableListResponse list(String hash) {
+        TimeTableList timeTableList = timeTableListRepository.findByHash(hash);
+        List<Course> courses = courseRepository.findAllById(timeTableList.getCourseIds());
+
+        return TimeTableListResponse.of(timeTableList, courses);
+    }
+
     @Transactional
-    public void makeTimeTable(List<Long> courseIds) {
+    public TimeTableList makeTimeTable(List<Long> courseIds) {
         List<Course> courses = courseRepository.findAllById(courseIds);
 
         if (courses.size() != courseIds.size()) {
@@ -30,5 +38,7 @@ public class TimeTableService {
 
         TimeTableList timeTableList = timeTableMakeService.make(courses);
         timeTableListRepository.save(timeTableList);
+
+        return timeTableList;
     }
 }
